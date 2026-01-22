@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Github, Linkedin, Twitter, Mail, Facebook, FileDown} from "lucide-react";
+import { Github, Mail, Facebook, FileDown} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/jethrosantiago26", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/YOUR_USERNAME", label: "LinkedIn" },
   { icon: Mail, href: "mailto:john.santiago@urios.edu.ph", label: "Email" },
   { icon: Facebook, href: "https://www.facebook.com/Jethzki", label: "Facebook" },
 ];

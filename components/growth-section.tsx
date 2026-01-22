@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import { BookOpen, Target, Zap, TrendingUp } from "lucide-react";
+import { BookOpen, Target, Zap, TrendingUp, Monitor } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 
@@ -26,14 +26,31 @@ const learningItems: LearningItem[] = [
     resources: ["Designing Data-Intensive Applications", "System Design Interview"],
   },
   {
-    title: "Rust Programming",
+    title: "Cybersecurity Fundamentals",
     description:
-      "Learning Rust for high-performance applications and WebAssembly. Exploring memory safety without garbage collection and building blazingly fast tools.",
+      "Learning the fundamentals of cybersecurity, including network security, basic threat analysis, and secure system practices. Focused on understanding common vulnerabilities and how to protect applications and data.",
     progress: 30,
     status: "In Progress",
     icon: Zap,
-    resources: ["The Rust Book", "Rustlings", "Rust by Example"],
+    resources: [
+      "OWASP Top 10",
+      "Cisco Networking Academy",
+      "Introduction to Cybersecurity"
+    ],
   },
+  {
+  title: "CompTIA A+ Fundamentals",
+  description:
+    "Preparing for the CompTIA A+ certification by studying Core 1 and Core 2 topics. Core 1 focuses on hardware, networking, and mobile devices, while Core 2 covers operating systems, security fundamentals, software troubleshooting, and operational procedures.",
+  progress: 0,
+  status: "Starting Soon",
+  icon: Monitor,
+  resources: [
+    "CompTIA A+ Official Study Guide",
+    "Professor Messer A+ (Core 1 & Core 2)",
+    "Exam Cram CompTIA A+"
+  ],
+},
   {
     title: "Machine Learning Fundamentals",
     description:
