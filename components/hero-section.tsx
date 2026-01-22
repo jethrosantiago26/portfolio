@@ -20,7 +20,7 @@ export function HeroSection() {
           <ThemeToggle />
         </div>
         {/* Profile Image - Replace src with your image */}
-        <div className="relative w-40 h-40 rounded-full overflow-hidden border-2 border-primary/30 bg-muted">
+        <div className="relative w-60 h-60 rounded-full overflow-hidden border-2 border-primary/30 bg-muted">
           <Image
             src="/images/profile.jpg"
             alt="Profile photo"
