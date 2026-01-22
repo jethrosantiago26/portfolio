@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { ArrowUpRight, Code2, Lightbulb, Rocket } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
 
 interface Project {
   title: string;
@@ -55,19 +56,28 @@ const projects: Project[] = [
 export function BigThreeSection() {
   return (
     <section className="space-y-8">
-      <div className="space-y-2">
+      <motion.div
+        className="space-y-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <h2 className="text-2xl font-bold text-foreground">The Big Three</h2>
         <p className="text-muted-foreground">
           Three projects that tell the story of my growth as a developer
         </p>
-      </div>
+      </motion.div>
 
       <div className="space-y-6">
         {projects.map((project, index) => (
-          <a
+          <motion.a
             key={project.title}
             href={project.link}
             className="group block p-6 rounded-lg bg-card border border-border hover:border-primary/50 transition-all duration-300"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            whileHover={{ scale: 1.02, y: -4 }}
           >
             <div className="flex flex-col md:flex-row gap-6">
               {/* Project Image - Replace with your screenshots */}
@@ -122,7 +132,7 @@ export function BigThreeSection() {
                 </div>
               </div>
             </div>
-          </a>
+          </motion.a>
         ))}
       </div>
     </section>

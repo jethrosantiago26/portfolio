@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface NavigationProps {
   activeTab: string;
@@ -16,8 +17,8 @@ const navItems = [
 export function Navigation({ activeTab, onTabChange }: NavigationProps) {
   return (
     <nav className="flex flex-col gap-3 py-8">
-      {navItems.map((item) => (
-        <button
+      {navItems.map((item, index) => (
+        <motion.button
           key={item.id}
           onClick={() => onTabChange(item.id)}
           className={cn(
@@ -26,15 +27,20 @@ export function Navigation({ activeTab, onTabChange }: NavigationProps) {
               ? "text-foreground"
               : "text-muted-foreground hover:text-foreground"
           )}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+          whileHover={{ x: 4 }}
+          whileTap={{ scale: 0.98 }}
         >
-          <span
-            className={cn(
-              "h-px bg-current transition-all duration-200",
-              activeTab === item.id ? "w-16" : "w-8 group-hover:w-12"
-            )}
+          <motion.span
+            className="h-px bg-current"
+            animate={{ width: activeTab === item.id ? 64 : 32 }}
+            whileHover={{ width: activeTab === item.id ? 64 : 48 }}
+            transition={{ duration: 0.2 }}
           />
           {item.label}
-        </button>
+        </motion.button>
       ))}
     </nav>
   );

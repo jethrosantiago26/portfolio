@@ -5,6 +5,7 @@ import React from "react"
 import { BookOpen, Target, Zap, TrendingUp, Monitor } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { motion } from "framer-motion";
 
 interface LearningItem {
   title: string;
@@ -65,7 +66,12 @@ const learningItems: LearningItem[] = [
 export function GrowthSection() {
   return (
     <section className="space-y-8">
-      <div className="space-y-2">
+      <motion.div
+        className="space-y-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="flex items-center gap-2">
           <BookOpen className="w-5 h-5 text-primary" />
           <h2 className="text-2xl font-bold text-foreground">Currently Learning</h2>
@@ -73,13 +79,17 @@ export function GrowthSection() {
         <p className="text-muted-foreground">
           Growth is a continuous journey. Here&apos;s what I&apos;m actively exploring.
         </p>
-      </div>
+      </motion.div>
 
       <div className="space-y-6">
-        {learningItems.map((item) => (
-          <div
+        {learningItems.map((item, index) => (
+          <motion.div
             key={item.title}
             className="p-6 rounded-lg bg-card border border-border"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.01 }}
           >
             <div className="space-y-4">
               <div className="flex items-start justify-between gap-4">
@@ -125,11 +135,16 @@ export function GrowthSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      <div className="p-6 rounded-lg bg-secondary/50 border border-border">
+      <motion.div
+        className="p-6 rounded-lg bg-secondary/50 border border-border"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
         <div className="flex items-start gap-4">
           <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
             <Target className="w-5 h-5 text-primary" />
@@ -143,7 +158,7 @@ export function GrowthSection() {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
