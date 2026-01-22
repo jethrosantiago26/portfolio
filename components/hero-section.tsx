@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { Github, Mail, Facebook, FileDown} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/jethrosantiago26", label: "GitHub" },
-  { icon: Mail, href: "mailto:john.santiago@urios.edu.ph", label: "Email" },
+  { icon: Mail, href: "mailto:john.santiago@urios.edu.ph", label: "Mail" },
   { icon: Facebook, href: "https://www.facebook.com/Jethzki", label: "Facebook" },
 ];
 
@@ -14,6 +15,10 @@ export function HeroSection() {
   return (
     <section className="min-h-[60vh] flex flex-col justify-center">
       <div className="space-y-6">
+        {/* Theme Toggle */}
+        <div className="flex justify-end">
+          <ThemeToggle />
+        </div>
         {/* Profile Image - Replace src with your image */}
         <div className="relative w-40 h-40 rounded-full overflow-hidden border-2 border-primary/30 bg-muted">
           <Image
