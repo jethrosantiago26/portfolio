@@ -15,7 +15,7 @@ export function HeroSection() {
     <section className="min-h-[60vh] flex flex-col justify-center">
       <div className="space-y-6">
         {/* Profile Image - Replace src with your image */}
-        <div className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-primary/30 bg-muted">
+        <div className="relative w-40 h-40 rounded-full overflow-hidden border-2 border-primary/30 bg-muted">
           <Image
             src="/images/profile.jpg"
             alt="Profile photo"
