@@ -55,7 +55,7 @@ const learningItems: LearningItem[] = [
     title: "Machine Learning Fundamentals",
     description:
       "Building a foundation in ML to better understand AI integrations. Focus on practical applications rather than pure theory.",
-    progress: 15,
+    progress: 10,
     status: "Starting Soon",
     icon: TrendingUp,
     resources: ["Fast.ai Course", "Hands-On ML with Scikit-Learn"],
