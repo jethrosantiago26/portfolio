@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Github, Linkedin, Twitter, Mail, Facebook } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, Facebook, FileDown} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/jethrosantiago26", label: "GitHub" },
@@ -42,17 +43,18 @@ export function HeroSection() {
         </div>
 
         <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl">
-          I build accessible, pixel-perfect digital experiences for the web. My
-          work lies at the intersection of design and development, creating
-          experiences that not only look great but are meticulously built for
-          performance and usability.
+          I am an undergraduate IT student with hands-on experience in building
+          functional and user-focused web applications. I have worked with various
+          technologies, including the Laravel framework, where I developed a school
+          profiling system that focused on clean design, usability, and efficient data
+          management.
         </p>
 
         <p className="text-muted-foreground leading-relaxed max-w-2xl">
-          Currently focused on building scalable web applications and exploring
-          the latest in modern web technologies. I believe in continuous
-          learning and pushing the boundaries of what&apos;s possible on the
-          web.
+           I have also built desktop-based projects such as a library management system
+           using Microsoft Visual Basic 2010 Express. I enjoy exploring different tech
+           stacks, strengthening my problem-solving skills, and continuously learning
+           modern technologies to create reliable and scalable software solutions.
         </p>
 
         <div className="flex items-center gap-4 pt-4">
@@ -65,7 +67,16 @@ export function HeroSection() {
             >
               <link.icon className="w-5 h-5" />
             </a>
+            
           ))}
+          {
+                    <Button asChild variant="outline" size="sm" className="gap-2 bg-transparent">
+            <a href="/resume.pdf" download>
+              <FileDown className="w-4 h-4" />
+              Resume
+            </a>
+          </Button>
+}
         </div>
       </div>
     </section>

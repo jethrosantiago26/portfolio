@@ -26,32 +26,32 @@ export default function Portfolio() {
                 <h2 className="text-2xl font-bold text-foreground">About Me</h2>
                 <div className="prose prose-invert max-w-none space-y-4">
                   <p className="text-muted-foreground leading-relaxed">
-                    I&apos;m a developer passionate about crafting accessible,
-                    pixel-perfect user interfaces that blend thoughtful design
-                    with robust engineering. My favorite work lies at the
-                    intersection of design and development, creating experiences
-                    that not only look great but are meticulously built for
-                    performance and usability.
+                    I&apos;m a third-year undergraduate IT student with a strong interest in
+                    developing reliable and user-focused software solutions. I enjoy building
+                    clean and functional interfaces while applying solid programming principles
+                    to create applications that are both usable and maintainable.
                   </p>
+
                   <p className="text-muted-foreground leading-relaxed">
-                    In the past, I&apos;ve had the opportunity to develop software
-                    across a variety of settings — from{" "}
-                    <span className="text-foreground font-medium">startups</span> and{" "}
-                    <span className="text-foreground font-medium">
-                      small digital product studios
-                    </span>{" "}
-                    to{" "}
-                    <span className="text-foreground font-medium">
-                      large corporations
-                    </span>
-                    . Each experience has shaped my approach to building
-                    software that scales.
+                    Throughout my academic journey, I have worked with a variety of technologies,
+                    including{" "}
+                    <span className="text-foreground font-medium">React</span>,{" "}
+                    <span className="text-foreground font-medium">PHP</span>,{" "}
+                    <span className="text-foreground font-medium">JavaScript</span>,{" "}
+                    <span className="text-foreground font-medium">HTML/CSS</span>,{" "}
+                    <span className="text-foreground font-medium">Tailwind CSS</span>, and database
+                    systems such as{" "}
+                    <span className="text-foreground font-medium">MySQL</span> and{" "}
+                    <span className="text-foreground font-medium">MariaDB</span>. These experiences
+                    have strengthened my understanding of full-stack web development and
+                    version control using{" "}
+                    <span className="text-foreground font-medium">Git</span>.
                   </p>
+
                   <p className="text-muted-foreground leading-relaxed">
-                    In my spare time, I&apos;m usually exploring new technologies,
-                    contributing to open source, reading about software
-                    architecture, or working on side projects that challenge my
-                    skills.
+                    In my free time, I continue to improve my skills by exploring modern web
+                    technologies, refining past projects, and building academic and personal
+                    applications that challenge my problem-solving and technical abilities.
                   </p>
                 </div>
               </section>
