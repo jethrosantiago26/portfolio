@@ -1,10 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder');
+const apiKey = process.env.RESEND_API_KEY;
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if API key is set
+    if (!apiKey || apiKey === 'placeholder') {
+      console.error('Missing or invalid RESEND_API_KEY');
+      return NextResponse.json(
+        { error: 'Email service not configured. Please contact the admin.' },
+        { status: 500 }
+      );
+    }
+
     const { name, email, message } = await request.json();
 
     // Validation
@@ -24,8 +33,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const resend = new Resend(apiKey);
+
     // Send email using Resend
-    await resend.emails.send({
+    const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'john.santiago@urios.edu.ph',
       replyTo: email,
@@ -41,6 +52,14 @@ export async function POST(request: NextRequest) {
       `,
     });
 
+    if (response.error) {
+      console.error('Resend error:', response.error);
+      return NextResponse.json(
+        { error: 'Failed to send email. Please try again later.' },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json(
       { 
         message: 'Thank you for your message! I\'ll get back to you soon.',
@@ -51,7 +70,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
-      { error: 'Failed to process your message' },
+      { error: 'Failed to process your message. Please try again.' },
       { status: 500 }
     );
   }
