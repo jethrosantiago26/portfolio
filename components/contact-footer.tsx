@@ -14,6 +14,8 @@ export function ContactFooter() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -25,11 +27,31 @@ export function ContactFooter() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
+  cosetLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to send message");
+      }
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setLoading(false);
+    }
     setFormData({ name: "", email: "", message: "" });
     setTimeout(() => setSubmitted(false), 3000);
   };
@@ -134,12 +156,22 @@ export function ContactFooter() {
               <Button
                 type="submit"
                 className="w-full md:w-auto gap-2"
-                disabled={submitted}
+                disabled={submitted || loading}
               >
                 <Send className="w-4 h-4" />
-                {submitted ? "Message Sent!" : "Send Message"}
+                {loading ? "Sending..." : submitted ? "Message Sent!" : "Send Message"}
               </Button>
             </motion.div>
+
+            {error && (
+              <motion.p
+                className="text-sm text-red-500"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                {error}
+              </motion.p>
+            )}
           </form>
 
           {/* Footer Info */}
