@@ -81,7 +81,7 @@ export function BigThreeSection() {
           >
             <div className="flex flex-col md:flex-row gap-6">
               {/* Project Image - Replace with your screenshots */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 flex justify-center md:justify-start">
                 <div className="relative w-full md:w-48 h-32 rounded-lg overflow-hidden bg-muted border border-border">
                   <Image
                     src={project.image || "/placeholder.svg"}
