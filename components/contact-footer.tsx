@@ -27,7 +27,9 @@ export function ContactFooter() {
     }));
   };
 
-  cosetLoading(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
     setError("");
 
     try {
@@ -52,8 +54,6 @@ export function ContactFooter() {
     } finally {
       setLoading(false);
     }
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setSubmitted(false), 3000);
   };
 
   return (

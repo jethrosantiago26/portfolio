@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,39 +24,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: Integrate with your email service
-    // Options:
-    // 1. Resend (https://resend.com) - npm install resend
-    // 2. SendGrid (https://sendgrid.com)
-    // 3. Mailgun (https://mailgun.com)
-    // 4. AWS SES
-    // 5. Gmail with Nodemailer
-
-    // Example with Resend (uncomment and install resend package):
-    /*
-    import { Resend } from 'resend';
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
+    // Send email using Resend
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'john.santiago@urios.edu.ph',
+      replyTo: email,
       subject: `New message from ${name}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <h2 style="color: #0066cc;">New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <h3>Message:</h3>
+          <p>${message.replace(/\n/g, '<br>')}</p>
+        </div>
       `,
     });
-    */
-
-    // For now, log to console (you'll see this in Vercel logs)
-    console.log('Contact form submission:', { name, email, message });
 
     return NextResponse.json(
       { 
-        message: 'Thank you for your message! Please set up an email service to receive submissions.',
+        message: 'Thank you for your message! I\'ll get back to you soon.',
         success: true 
       },
       { status: 200 }
